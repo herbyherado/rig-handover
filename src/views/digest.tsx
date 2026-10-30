@@ -1,9 +1,10 @@
+import { sortRows } from '../digest/sortRows.js';
 import type { DigestRow, Night } from '../digest/types.js';
 
 const dash = '—';
 
 export function DigestPage({ night }: { night: Night }) {
-  const rows = [...night.rows].sort((a, b) => a.job.localeCompare(b.job));
+  const rows = sortRows(night.rows);
   return (
     <>
       <h1>digest {night.night}</h1>
