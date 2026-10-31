@@ -41,3 +41,16 @@ here (a link or a config entry). Don't copy: copies drift.
 - Never commit `.env`, tokens or previews.
 - Don't touch `runs/`: those are real nights, read-only fixtures.
 - No client JS (ADR 0001).
+
+## Seat route (nerv)
+
+On the `nerv` seat, Limen jobs reach Claude through `pi-claude-bridge`, which registers the provider
+`claude-bridge`. Limen only adds the bridge on its own for a provider named `pi-claude`, so name it
+yourself. Every `limen spawn` and `limen continue`, including doorbell reviews, takes this route:
+
+```
+--engine pi --provider claude-bridge --model claude-opus-5-5 --thinking medium --extension /home/agent/.pi/agent/npm/node_modules/pi-claude-bridge
+```
+
+Without `--extension`, the job fails at start with `Unknown provider "claude-bridge"` or
+`timed out waiting for agent startup`.
