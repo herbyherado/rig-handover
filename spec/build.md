@@ -24,4 +24,4 @@ Status marks are prose only: 🟠 ACTIVE · 🔴 PLANNED · 🟢 PROVEN · ⚪ D
 
 ## SEAT
 
-- Pi jobs on this seat run the model through `pi-claude-bridge`, which `--no-extensions` hides. Every `limen spawn` and `limen continue` with `--engine pi --provider claude-bridge` must also pass `--extension /home/agent/.pi/agent/npm/node_modules/pi-claude-bridge`, or the worker fails with `Unknown provider "claude-bridge"`. Route: `--engine pi --provider claude-bridge --model claude-opus-5-5 --thinking medium`.
+- Model route on the `nerv` seat: see "Seat route (nerv)" in `AGENTS.md`.

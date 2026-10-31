@@ -44,13 +44,12 @@ here (a link or a config entry). Don't copy: copies drift.
 
 ## Seat route (nerv)
 
-On the `nerv` seat, Limen jobs reach Claude through `pi-claude-bridge`, which registers the provider
-`claude-bridge`. Limen only adds the bridge on its own for a provider named `pi-claude`, so name it
-yourself. Every `limen spawn` and `limen continue`, including doorbell reviews, takes this route:
+On the `nerv` seat, every `limen spawn`, `limen continue` and doorbell job (`limen github review` or
+`limen github work`) takes this route:
 
 ```
---engine pi --provider claude-bridge --model claude-opus-5-5 --thinking medium --extension /home/agent/.pi/agent/npm/node_modules/pi-claude-bridge
+--engine pi --provider claude-bridge --model claude-opus-5-5 --thinking medium
 ```
 
-Without `--extension`, the job fails at start with `Unknown provider "claude-bridge"` or
-`timed out waiting for agent startup`.
+Limen on this seat runs from the `herbyherado/limen` fork, which loads `pi-claude-bridge` for the
+`claude-bridge` provider on its own. Do not add `--extension` for it.
