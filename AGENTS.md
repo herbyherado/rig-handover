@@ -41,3 +41,15 @@ here (a link or a config entry). Don't copy: copies drift.
 - Never commit `.env`, tokens or previews.
 - Don't touch `runs/`: those are real nights, read-only fixtures.
 - No client JS (ADR 0001).
+
+## Seat route (nerv)
+
+On the `nerv` seat, every `limen spawn`, `limen continue` and doorbell job (`limen github review` or
+`limen github work`) takes this route:
+
+```
+--engine pi --provider claude-bridge --model claude-opus-5-5 --thinking medium
+```
+
+Limen on this seat runs from the `herbyherado/limen` fork, which loads `pi-claude-bridge` for the
+`claude-bridge` provider on its own. Do not add `--extension` for it.
